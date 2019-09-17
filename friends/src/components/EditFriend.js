@@ -19,11 +19,11 @@ handleChange = e =>
       editFriend: {
         ...this.state.editFriend,
         [e.target.name]: e.target.value
-        
-      }
+     
+      }  
+     
     });
-
-
+   
     EditFriend  = e => {
         e.preventDefault();
         // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise

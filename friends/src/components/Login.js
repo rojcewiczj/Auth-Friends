@@ -1,8 +1,9 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
+import Loading from './Loading';
 class Login extends React.Component {
   state = {
+      loading: false,
     credentials: {
       username: '',
       password: ''
@@ -20,6 +21,7 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    this.setState({ loading: true });
     // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
     axiosWithAuth()
       .post('/login', this.state.credentials)
@@ -27,6 +29,7 @@ class Login extends React.Component {
         localStorage.setItem('token', res.data.payload);
         // redirect to the apps main page?
         this.props.history.push('/protected');
+        this.setState({ loading: false });
       })
       .catch(err => console.log(err));
   };
@@ -49,6 +52,7 @@ class Login extends React.Component {
           />
           <button>Log in</button>
         </form>
+        <Loading />
       </div>
     );
   }
