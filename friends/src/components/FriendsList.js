@@ -15,7 +15,7 @@ class FriendsList extends React.Component {
 
   getData = () => {
     axiosWithAuth()
-      .get('/data')
+      .get('/friends')
       .then(res => {
         this.setState({ Friends: res.data});
       })
@@ -29,13 +29,15 @@ class FriendsList extends React.Component {
     
     return (
       <div>
-          {this.state.Friends.map(friend => {
-              <div>
+          {this.state.Friends.map(friend => (
+              
                   <ul>
                       <li>{friend.name}</li>
+                      <li>{friend.age}</li>
+                      <li>{friend.email}</li>
                   </ul>
-              </div>
-          })}
+            
+         ))}
       </div>
     );
   }
