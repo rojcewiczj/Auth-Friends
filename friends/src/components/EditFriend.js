@@ -2,10 +2,10 @@ import React from 'react';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-class CreateFriend extends React.Component {
+class EditFriend extends React.Component {
     state = {
-      newFriend: {
-         
+      editFriend: {
+          id: '',
           name:'',
           age:[],
           email: '',
@@ -16,19 +16,19 @@ class CreateFriend extends React.Component {
 
 handleChange = e => 
     this.setState({
-      newFriend: {
-        ...this.state.newFriend,
+      editFriend: {
+        ...this.state.editFriend,
         [e.target.name]: e.target.value
         
       }
     });
 
 
-    NewFriend  = e => {
+    EditFriend  = e => {
         e.preventDefault();
         // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
         axiosWithAuth()
-          .post('/friends', this.state.newFriend)
+          .put(`/friends/${this.state.editFriend.id}`, this.state.editFriend)
           .then(res => {
                console.log(res);
           })
@@ -41,26 +41,32 @@ handleChange = e =>
              {
         return (
           <div>
-            <form onSubmit={this.NewFriend}>
+            <form onSubmit={this.EditFriend}>
+            <input
+                type="name"
+                name="id"
+                value={this.state.editFriend.id}
+                onChange={this.handleChange}
+              />
               <input
                 type="name"
                 name="name"
-                value={this.state.newFriend.name}
+                value={this.state.editFriend.name}
                 onChange={this.handleChange}
               />
               <input
                 type="age"
                 name="age"
-                value={this.state.newFriend.age}
+                value={this.state.editFriend.age}
                 onChange={this.handleChange}
               />
               <input
                 type="email"
                 name="email"
-                value={this.state.newFriend.email}
+                value={this.state.editFriend.email}
                 onChange={this.handleChange}
               />
-              <button>Create A New Friend!</button>
+              <button>Edit Friend!</button>
             </form>
           </div>
         );
@@ -68,7 +74,7 @@ handleChange = e =>
 
   };
 
-  export default CreateFriend;
+  export default EditFriend;
 
 
   

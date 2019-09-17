@@ -1,5 +1,5 @@
 import React from 'react';
-
+import EditFriend from './EditFriend';
 
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -35,9 +35,11 @@ class FriendsList extends React.Component {
                       <li>{friend.name}</li>
                       <li>{friend.age}</li>
                       <li>{friend.email}</li>
+                      
                   </ul>
             
          ))}
+         <EditFriend />
       </div>
     );
   }

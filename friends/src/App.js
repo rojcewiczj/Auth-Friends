@@ -15,11 +15,13 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/protected">Protected Page</Link>
+            <Link to="/protected">Friend List</Link>
           </li>
           <li>
           <Link to='/CreateAFriend'>Create A Friend</Link>
           </li>
+          
+
         </ul>
         <Switch>
           <PrivateRoute exact path="/protected" component={FriendsList} />
