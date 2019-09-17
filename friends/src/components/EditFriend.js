@@ -5,7 +5,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 class EditFriend extends React.Component {
     state = {
       editFriend: {
-          id: '',
+         id: [], 
           name:'',
           age:[],
           email: '',
@@ -31,6 +31,10 @@ handleChange = e =>
           .put(`/friends/${this.state.editFriend.id}`, this.state.editFriend)
           .then(res => {
                console.log(res);
+               const inputs = document.querySelectorAll('input');
+               inputs.forEach(i =>{
+                   i.value = ' '
+               })
           })
           .catch(err => console.log(err));
       };

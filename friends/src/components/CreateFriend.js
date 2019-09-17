@@ -31,6 +31,10 @@ handleChange = e =>
           .post('/friends', this.state.newFriend)
           .then(res => {
                console.log(res);
+               const inputs = document.querySelectorAll('input');
+               inputs.forEach(i =>{
+                   i.value = ' '
+               })
           })
           .catch(err => console.log(err));
       };

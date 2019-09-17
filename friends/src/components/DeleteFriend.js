@@ -29,6 +29,10 @@ handleChange = e =>
           .delete(`/friends/${this.state.deleteFriend.id}`, this.state.deleteFriend)
           .then(res => {
                console.log(res);
+               const inputs = document.querySelectorAll('input');
+               inputs.forEach(i =>{
+                   i.value = ' '
+               })
           })
           .catch(err => console.log(err));
       };

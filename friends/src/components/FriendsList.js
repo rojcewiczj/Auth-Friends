@@ -30,8 +30,10 @@ class FriendsList extends React.Component {
     return (
       <div>
           {this.state.Friends.map(friend => (
-              
-                  <ul>
+           
+                  <ul>    
+                      <h3> {friend.id}</h3>
+                      
                       <li>{friend.name}</li>
                       <li>{friend.age}</li>
                       <li>{friend.email}</li>
