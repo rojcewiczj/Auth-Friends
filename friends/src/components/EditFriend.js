@@ -13,7 +13,9 @@ class EditFriend extends React.Component {
 
       }
     }
-
+    
+    
+      
 handleChange = e => 
     this.setState({
       editFriend: {
@@ -26,7 +28,6 @@ handleChange = e =>
    
     EditFriend  = e => {
         e.preventDefault();
-        // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
         axiosWithAuth()
           .put(`/friends/${this.state.editFriend.id}`, this.state.editFriend)
           .then(res => {

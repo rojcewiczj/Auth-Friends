@@ -9,11 +9,12 @@ class FriendsList extends React.Component {
     Friends: []
   };
 
-  componentDidMount() {
-    this.getData();
+  componentDidUpdate() {
+    this.getFriends();
   }
 
-  getData = () => {
+
+  getFriends = () => {
     axiosWithAuth()
       .get('/friends')
       .then(res => {
