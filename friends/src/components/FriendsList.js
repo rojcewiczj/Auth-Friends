@@ -1,6 +1,6 @@
 import React from 'react';
 import EditFriend from './EditFriend';
-
+import DeleteFriend from './DeleteFriend';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -40,6 +40,7 @@ class FriendsList extends React.Component {
             
          ))}
          <EditFriend />
+         <DeleteFriend />
       </div>
     );
   }
