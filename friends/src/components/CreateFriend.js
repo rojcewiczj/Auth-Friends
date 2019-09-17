@@ -1,17 +1,56 @@
 import React from 'react';
-import axios from 'axios';
 
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class CreateFriend extends React.Component {
     state = {
-       newFriends=[]
+       newFriends={
+           name:'',
+           age: '',
+           email: '',
+       }
     }
 };
-handleSubmit = e => {
+handleChange = e => {
     this.setState({
-      newFriends: {
-        ...this.state.newFriends,
+      newFriend: {
+        ...this.state.newFriend,
         [e.target.name]: e.target.value
       }
     });
+
+    NewFriend  = e => {
+        e.preventDefault();
+        // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
+        axiosWithAuth()
+          .post('/friends', this.state.NewFriend)
+          .catch(err => console.log(err));
+      };
+
+
+
+    render() 
+             {
+        return (
+          <div>
+            <form onSubmit={this.NewFriend}>
+              <input
+                type="text"
+                name="name"
+                value={this.state.NewFriend.name}
+                onChange={this.handleChange}
+              />
+              <input
+                type="password"
+                name="password"
+                value={this.state.credentials.password}
+                onChange={this.handleChange}
+              />
+              <button>Log in</button>
+            </form>
+          </div>
+        );
+      }
+
   };
+  
