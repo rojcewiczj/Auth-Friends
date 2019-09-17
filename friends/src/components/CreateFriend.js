@@ -4,14 +4,14 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class CreateFriend extends React.Component {
     state = {
-       newFriends={
+       newFriend:{
            name:'',
            age: '',
            email: '',
        }
     }
-};
-handleChange = e => {
+
+handleChange = e => 
     this.setState({
       newFriend: {
         ...this.state.newFriend,
@@ -19,11 +19,15 @@ handleChange = e => {
       }
     });
 
+
     NewFriend  = e => {
         e.preventDefault();
         // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
         axiosWithAuth()
           .post('/friends', this.state.NewFriend)
+          .then(res => {
+               console.log(res);
+          })
           .catch(err => console.log(err));
       };
 
@@ -37,20 +41,30 @@ handleChange = e => {
               <input
                 type="text"
                 name="name"
-                value={this.state.NewFriend.name}
+                value={this.state.newFriend.name}
                 onChange={this.handleChange}
               />
               <input
-                type="password"
-                name="password"
-                value={this.state.credentials.password}
+                type="text"
+                name="age"
+                value={this.state.newFriend.age}
                 onChange={this.handleChange}
               />
-              <button>Log in</button>
+              <input
+                type="text"
+                name="email"
+                value={this.state.newFriend.email}
+                onChange={this.handleChange}
+              />
+              <button>Create A New Friend!</button>
             </form>
           </div>
         );
       }
 
   };
+
+  export default CreateFriend;
+
+
   
